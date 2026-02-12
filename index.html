@@ -5,48 +5,78 @@
 <title>Para mi princesa 💖</title>
 
 <style>
+
 body {
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: linear-gradient(135deg, #ff758c, #ff7eb3);
     font-family: Arial, sans-serif;
-    text-align: center;
-    overflow-x: hidden;
     color: white;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Corazones palpitando en el fondo */
+body::before {
+    content: "💖 💕 💗 💘 💞 💝 💖 💕 💗 💘 💞 💝";
+    position: absolute;
+    font-size: 60px;
+    opacity: 0.08;
+    width: 200%;
+    animation: pulseHearts 4s infinite ease-in-out;
+}
+
+@keyframes pulseHearts {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.container {
+    text-align: center;
+    max-width: 650px;
+    padding: 30px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
 }
 
 h1 {
-    margin-top: 50px;
-    font-size: 35px;
+    font-size: 30px;
 }
 
 p {
     font-size: 18px;
-    max-width: 700px;
-    margin: auto;
-    padding: 15px;
 }
 
 img {
-    width: 250px;
+    width: 220px;
     border-radius: 20px;
-    margin-top: 20px;
+    margin: 20px 0;
     box-shadow: 0 0 20px rgba(255,255,255,0.6);
 }
 
 button {
-    padding: 15px 35px;
+    padding: 14px 30px;
     font-size: 18px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    margin: 20px;
+    margin: 12px;
     transition: 0.3s;
 }
 
 #yes {
     background-color: #ff2e63;
     color: white;
+}
+
+#yes:hover {
+    transform: scale(1.1);
 }
 
 #no {
@@ -56,8 +86,8 @@ button {
 }
 
 #contador {
-    font-size: 20px;
-    margin-top: 20px;
+    font-size: 18px;
+    margin-top: 15px;
     font-weight: bold;
 }
 
@@ -72,19 +102,22 @@ button {
     from { transform: translateY(0); opacity: 1; }
     to { transform: translateY(-100vh); opacity: 0; }
 }
+
 </style>
 </head>
 
 <body>
+
+<div class="container">
 
 <h1>Hola mi princesa 💖</h1>
 
 <img src="foto.jpg" alt="Nuestra foto">
 
 <p>
-Hola mi niña bonita, hice esto para preguntarte si puedes ser mi San Valentín, 
-yo pensé q lo ibas a hacer porq q me amabas, pero es verdad, tengo q pedirte 
-si me harías el honor de ser mi San Valentín, y quiero q lo seas este y todos los q vengan, 
+Hola mi niña bonita, hice esto para preguntarte si puedes ser mi San Valentín,
+yo pensé q lo ibas a hacer porq q me amabas, pero es verdad, tengo q pedirte
+si me harías el honor de ser mi San Valentín, y quiero q lo seas este y todos los q vengan,
 te amo mucho, muchísimo, te prometo una relación sincera, y hacerte muy muy feliz mi amorcito 🥺💗💕💞💖💝
 </p>
 
@@ -95,17 +128,26 @@ te amo mucho, muchísimo, te prometo una relación sincera, y hacerte muy muy fe
 <button id="yes" onclick="yesClick()">shi 💕</button>
 <button id="no" onmouseover="moveButton()">nah 😅</button>
 
-<iframe width="0" height="0" 
-src="https://www.youtube.com/embed/https://youtu.be/qM8-gjh11Dk?si=CFIXsELoTzi7cERJ?autoplay=1&loop=1" 
-frameborder="0" allow="autoplay">
+</div>
+
+<!-- Música YouTube corregida -->
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/qM8-gjh11Dk?autoplay=1&loop=1&playlist=qM8-gjh11Dk"
+frameborder="0"
+allow="autoplay">
 </iframe>
 
 <script>
+
 function yesClick() {
     document.body.innerHTML = `
-        <h1>🥰 sabía q ibas q decir q shi 🥰</h1>
-        <h2>Te amo muchísimo mi princesa 💖</h2>
-        <p>Prometo hacerte feliz hoy y siempre 💞</p>
+        <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(135deg,#ff758c,#ff7eb3);color:white;text-align:center;">
+            <div>
+                <h1>🥰 sabía q ibas q decir q shi 🥰</h1>
+                <h2>Te amo muchísimo mi princesa 💖</h2>
+                <p>Prometo hacerte feliz hoy y siempre 💞</p>
+            </div>
+        </div>
     `;
 }
 
@@ -143,7 +185,8 @@ function createHeart() {
     setTimeout(() => heart.remove(), 6000);
 }
 
-setInterval(createHeart, 300);
+setInterval(createHeart, 400);
+
 </script>
 
 </body>
