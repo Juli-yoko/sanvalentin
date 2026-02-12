@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para mi princesa 💖</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+    color: white;
+}
+
+h1 {
+    margin-top: 50px;
+    font-size: 35px;
+}
+
+p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: auto;
+    padding: 15px;
+}
+
+img {
+    width: 250px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
+
+button {
+    padding: 15px 35px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 20px;
+    transition: 0.3s;
+}
+
+#yes {
+    background-color: #ff2e63;
+    color: white;
+}
+
+#no {
+    background-color: white;
+    color: #ff2e63;
+    position: absolute;
+}
+
+#contador {
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Hola mi princesa 💖</h1>
+
+<img src="foto.jpg" alt="Nuestra foto">
+
+<p>
+Hola mi niña bonita, hice esto para preguntarte si puedes ser mi San Valentín, 
+yo pensé q lo ibas a hacer porq q me amabas, pero es verdad, tengo q pedirte 
+si me harías el honor de ser mi San Valentín, y quiero q lo seas este y todos los q vengan, 
+te amo mucho, muchísimo, te prometo una relación sincera, y hacerte muy muy feliz mi amorcito 🥺💗💕💞💖💝
+</p>
+
+<div id="contador"></div>
+
+<h2>¿me harías el honor de ser mi San Valentín? 💘</h2>
+
+<button id="yes" onclick="yesClick()">shi 💕</button>
+<button id="no" onmouseover="moveButton()">nah 😅</button>
+
+<iframe width="0" height="0" 
+src="https://www.youtube.com/embed/https://youtu.be/qM8-gjh11Dk?si=CFIXsELoTzi7cERJ?autoplay=1&loop=1" 
+frameborder="0" allow="autoplay">
+</iframe>
+
+<script>
+function yesClick() {
+    document.body.innerHTML = `
+        <h1>🥰 sabía q ibas q decir q shi 🥰</h1>
+        <h2>Te amo muchísimo mi princesa 💖</h2>
+        <p>Prometo hacerte feliz hoy y siempre 💞</p>
+    `;
+}
+
+function moveButton() {
+    let button = document.getElementById("no");
+    button.style.top = Math.random() * 80 + "%";
+    button.style.left = Math.random() * 80 + "%";
+}
+
+const fechaInicio = new Date("2025-01-28T00:52:00");
+
+function actualizarContador() {
+    const ahora = new Date();
+    const diferencia = ahora - fechaInicio;
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferencia / 1000) % 60);
+
+    document.getElementById("contador").innerHTML =
+        `Llevamos juntos: ${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos 💕`;
+}
+
+setInterval(actualizarContador, 1000);
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
