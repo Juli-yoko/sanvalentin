@@ -74,7 +74,7 @@ button {
     font-weight: bold;
 }
 
-/* Corazones palpitando */
+/* Corazones */
 .heart {
     position: fixed;
     font-size: 20px;
@@ -114,19 +114,25 @@ te amo mucho, muchísimo, te prometo una relación sincera, y hacerte muy muy fe
 <button id="no" onmouseover="moveButton()">nah 😅</button>
 </div>
 
-<br>
-<button onclick="playMusic()">🎵 toca antes de leer por favor🥺</button>
-
-<iframe id="music"
-width="0" height="0"
-src=""
-frameborder="0"
-allow="autoplay">
-</iframe>
-
 </div>
 
+<!-- AUDIO MP3 -->
+<audio id="music" src="cancion.mp3" autoplay loop></audio>
+
 <script>
+
+const audio = document.getElementById("music");
+
+/* Intentar autoplay */
+window.addEventListener("load", () => {
+    audio.play().catch(() => {
+        /* Si el navegador lo bloquea,
+           se reproducirá al primer toque */
+        document.body.addEventListener("click", () => {
+            audio.play();
+        }, { once: true });
+    });
+});
 
 function yesClick() {
     document.querySelector(".container").innerHTML = `
@@ -141,11 +147,6 @@ function moveButton() {
     button.style.position = "absolute";
     button.style.top = Math.random() * 80 + "%";
     button.style.left = Math.random() * 80 + "%";
-}
-
-function playMusic() {
-    document.getElementById("music").src =
-    "https://www.youtube.com/embed/qM8-gjh11Dk?autoplay=1&loop=1&playlist=qM8-gjh11Dk";
 }
 
 const fechaInicio = new Date("2025-01-28T00:52:00");
